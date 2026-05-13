@@ -1,0 +1,15 @@
+# Nested repos / copies
+yatra/
+yatra-1/
+yatra-2/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Env
+.env
+.env.local

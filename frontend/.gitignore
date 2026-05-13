@@ -1,0 +1,11 @@
+# Local env (secrets)
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
