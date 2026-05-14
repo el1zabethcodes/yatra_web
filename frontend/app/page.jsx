@@ -5,21 +5,41 @@ import Link from "next/link";
 import Header from "@/components/shared/Header";
 import { motion } from "framer-motion";
 
-/* ─── Fade-in helper ─── */
 const Fade = ({ children, delay = 0, className = "" }) => (
   <motion.div
-    initial={{ opacity: 0, y: 32 }}
+    initial={{ opacity: 0, y: 28 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-60px" }}
-    transition={{ duration: 0.75, delay, ease: "easeOut" }}
+    transition={{ duration: 0.8, delay, ease: "easeOut" }}
     className={className}
   >
     {children}
   </motion.div>
 );
 
-/* ─── 3D CTA Button ─── */
-function GetStartedButton() {
+const Divider = () => (
+  <div className="w-full h-px" style={{ background: "rgba(27,59,24,0.10)" }} />
+);
+
+const glassMain = {
+  background: "rgba(255,255,255,0.30)",
+  backdropFilter: "blur(12px)",
+  WebkitBackdropFilter: "blur(12px)",
+  border: "1px solid rgba(255,255,255,0.50)",
+  boxShadow: "0 8px 32px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65)",
+  borderRadius: "28px",
+};
+
+const glassSub = {
+  background: "rgba(255,255,255,0.25)",
+  backdropFilter: "blur(12px)",
+  WebkitBackdropFilter: "blur(12px)",
+  border: "1px solid rgba(255,255,255,0.40)",
+  boxShadow: "0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.55)",
+  borderRadius: "20px",
+};
+
+function CTAButton() {
   return (
     <motion.div
       whileHover={{ y: -3 }}
@@ -33,16 +53,12 @@ function GetStartedButton() {
         style={{
           background: "linear-gradient(180deg, #7a8f63 0%, #6B7D56 60%)",
           color: "#E6E4C5",
-          boxShadow:
-            "0 7px 0 #4a5a3a, 0 9px 0 #3a4a2a, 0 12px 24px rgba(74,90,58,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+          boxShadow: "0 7px 0 #4a5a3a, 0 9px 0 #3a4a2a, 0 12px 24px rgba(74,90,58,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
         }}
       >
         <span
           className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-2xl"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
-          }}
+          style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)" }}
         />
         GET STARTED
       </Link>
@@ -50,89 +66,79 @@ function GetStartedButton() {
   );
 }
 
-/* ─── Divider ─── */
-const Divider = () => (
-  <div className="w-full h-px" style={{ background: "rgba(45,45,45,0.12)" }} />
-);
-
-/* ─── Glassmorphism card styles ─── */
-const glassMain = {
-  background: "rgba(255, 255, 255, 0.30)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  border: "1px solid rgba(255, 255, 255, 0.50)",
-  boxShadow:
-    "0 8px 32px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65)",
-  borderRadius: "28px",
-};
-
-const glassSub = {
-  background: "rgba(255, 255, 255, 0.25)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  border: "1px solid rgba(255, 255, 255, 0.40)",
-  boxShadow:
-    "0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.55)",
-  borderRadius: "20px",
-};
+/* instrument card for section C */
+function InstrumentCard({ title, body, delay }) {
+  return (
+    <Fade delay={delay}>
+      <div
+        className="rounded-[28px] px-7 py-8 h-full"
+        style={{
+          background: "rgba(255,255,255,0.28)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          border: "1px solid rgba(255,255,255,0.45)",
+          boxShadow: "0 6px 28px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.65)",
+        }}
+      >
+        <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#D35400] mb-3">
+          Instrument
+        </p>
+        <h3
+          className="font-black leading-tight mb-4"
+          style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)", color: "#1B3B18" }}
+        >
+          {title}
+        </h3>
+        <p className="text-sm font-medium leading-relaxed" style={{ color: "rgba(27,59,24,0.65)" }}>
+          {body}
+        </p>
+      </div>
+    </Fade>
+  );
+}
 
 export default function HomePage() {
   return (
     <div
       className="min-h-screen relative overflow-x-hidden"
-      style={{ background: "#F2F0D8", color: "#2D2D2D" }}
+      style={{ background: "#DFE0BF", color: "#1B3B18" }}
     >
-      {/* ── Grid background ── */}
+      {/* grid texture */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage: `
-            linear-gradient(#E2E0C8 1px, transparent 1px),
-            linear-gradient(90deg, #E2E0C8 1px, transparent 1px)
+            linear-gradient(rgba(27,59,24,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(27,59,24,0.04) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
-          opacity: 0.7,
         }}
       />
 
-      <Header />
+      <div className="relative z-10">
+        <Header />
+      </div>
 
-      {/* ══════════════════════════════════════════════
-          HERO — wide layout
-          Octopus left (z-20) overlaps glass cards (z-10)
-      ══════════════════════════════════════════════ */}
+      {/* ══ A: HERO — untouched ══ */}
       <section className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-28 pt-4 overflow-visible">
-        {/* Soft colour blobs — make glassmorphism visible */}
         <div
           className="absolute pointer-events-none"
           style={{
-            top: "10%",
-            left: "30%",
-            width: 480,
-            height: 480,
-            background:
-              "radial-gradient(circle, rgba(107,125,86,0.18) 0%, transparent 70%)",
+            top: "10%", left: "30%", width: 480, height: 480,
+            background: "radial-gradient(circle, rgba(107,125,86,0.18) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
         <div
           className="absolute pointer-events-none"
           style={{
-            bottom: "5%",
-            right: "5%",
-            width: 320,
-            height: 320,
-            background:
-              "radial-gradient(circle, rgba(255,220,160,0.22) 0%, transparent 70%)",
+            bottom: "5%", right: "5%", width: 320, height: 320,
+            background: "radial-gradient(circle, rgba(255,220,160,0.22) 0%, transparent 70%)",
             filter: "blur(50px)",
           }}
         />
 
-        {/* ── Flex row on desktop, column on mobile ── */}
         <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-0">
-          {/* ── OCTOPUS — dominant, center-left ──
-              Negative right margin pulls cards under the octopus edge
-              z-20 keeps it in front of the glass cards               */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85, x: -30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -154,9 +160,7 @@ export default function HomePage() {
             />
           </motion.div>
 
-          {/* ── GLASS CARDS — stacked, right side ── */}
           <div className="relative z-10 flex flex-col gap-5 flex-1 w-full min-w-0">
-            {/* Main card — STAND OUT */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -166,10 +170,7 @@ export default function HomePage() {
             >
               <h1
                 className="font-black leading-[0.9] tracking-[-0.04em]"
-                style={{
-                  fontSize: "clamp(4.5rem, 10vw, 9rem)",
-                  color: "#2D2D2D",
-                }}
+                style={{ fontSize: "clamp(4.5rem, 10vw, 9rem)", color: "#1B3B18" }}
               >
                 STAND
                 <br />
@@ -177,7 +178,6 @@ export default function HomePage() {
               </h1>
             </motion.div>
 
-            {/* Secondary card — tagline */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -185,10 +185,7 @@ export default function HomePage() {
               className="px-8 py-5 sm:px-10 sm:py-6"
               style={glassSub}
             >
-              <p
-                className="font-semibold text-lg sm:text-xl leading-snug"
-                style={{ color: "rgba(45,45,45,0.80)" }}
-              >
+              <p className="font-semibold text-lg sm:text-xl leading-snug" style={{ color: "rgba(27,59,24,0.75)" }}>
                 Close the Gap. Build Your Future.
               </p>
             </motion.div>
@@ -196,123 +193,174 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          BODY COPY — narrow centred column
-      ══════════════════════════════════════════════ */}
+      {/* ══ B: PHILOSOPHY ══ */}
       <div className="relative z-20 max-w-2xl mx-auto px-6 lg:px-0">
         <Divider />
 
-        {/* ── Subheadline (Ashta intro) ── */}
-        <section className="py-16">
-          <Fade>
-            <p
-              className="text-lg font-medium leading-relaxed"
-              style={{ color: "rgba(45,45,45,0.65)" }}
-            >
-              This was me, Ashta. I was drowning in options but starving for a
-              system. My brain felt like a messy jungle. No map. No focus. Just
-              pure, unfiltered panic.
-            </p>
-          </Fade>
-        </section>
-
-        <Divider />
-
-        {/* ── TRANSITION SECTION ── */}
         <section className="py-20">
           <Fade>
-            <p
-              className="text-xl sm:text-2xl font-medium leading-relaxed"
-              style={{ color: "rgba(45,45,45,0.82)" }}
-            >
-              Then, I found a steady beacon:{" "}
-              <strong className="font-black" style={{ color: "#2D2D2D" }}>
-                Yatra.
-              </strong>{" "}
-              It didn&apos;t tell me to &lsquo;hustle harder.&rsquo; It told me
-              to breathe. I realized the ocean isn&apos;t something to
-              fear—it&apos;s something to navigate. I just needed to find my
-              specific current.
-            </p>
-          </Fade>
-        </section>
-
-        <Divider />
-
-        {/* ── PHILOSOPHY SECTION ── */}
-        <section className="py-20">
-          <Fade>
-            <p
-              className="text-[10px] font-black uppercase tracking-[0.4em] mb-5"
-              style={{ color: "rgba(45,45,45,0.35)" }}
-            >
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: "rgba(27,59,24,0.35)" }}>
               The Philosophy
             </p>
-            <p
-              className="font-black tracking-tight leading-[1.15]"
-              style={{
-                fontSize: "clamp(2rem, 5.5vw, 3.5rem)",
-                color: "#2D2D2D",
-              }}
+            <h2
+              className="font-black tracking-tight leading-[1.1] mb-8"
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3rem)", color: "#1B3B18" }}
             >
-              Yatra turned my chaos into an algorithm. Progress isn&apos;t about
-              how many arms you have; it&apos;s about having the right tools in
-              them.
+              From Cognitive Overload<br />to Cognitive Clarity.
+            </h2>
+            <p className="text-lg font-medium leading-relaxed" style={{ color: "rgba(27,59,24,0.68)" }}>
+              In a world that profits off your FOMO, Yatra offers a quiet place to breathe.
+              We believe that a career in tech shouldn&apos;t feel like a race against an invisible clock.
+              It should feel like a pilgrimage.
+            </p>
+          </Fade>
+
+          <Fade delay={0.15}>
+            <p className="text-lg font-medium leading-relaxed mt-6" style={{ color: "rgba(27,59,24,0.68)" }}>
+              We look beyond the keywords on your resume. We analyze your trajectory, your coding logic,
+              and your growth patterns to ensure you aren&apos;t just moving fast—but moving in the right direction.
+            </p>
+          </Fade>
+        </section>
+      </div>
+
+      {/* ship image — pilgrimage visual */}
+      <Fade className="relative z-20 w-full">
+        <div className="w-full max-w-4xl mx-auto px-6 mb-4">
+          <div className="rounded-[32px] overflow-hidden" style={{ boxShadow: "0 12px 48px rgba(27,59,24,0.12)" }}>
+            <Image
+              src="/assets/main/ship_in_sea.png"
+              alt="A ship on a calm pilgrimage"
+              width={1200}
+              height={500}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </Fade>
+
+      {/* ══ C: CORE INSTRUMENTS ══ */}
+      <div className="relative z-20 max-w-5xl mx-auto px-6 py-20">
+        <Fade>
+          <div className="flex items-center gap-4 mb-3">
+            <div className="relative w-8 h-8 shrink-0">
+              <Image src="/assets/main/logo.png" alt="" fill className="object-contain" sizes="32px" />
+            </div>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em]" style={{ color: "rgba(27,59,24,0.35)" }}>
+              The Core Instruments
+            </p>
+          </div>
+          <h2
+            className="font-black tracking-tight leading-tight mb-12"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.6rem)", color: "#1B3B18" }}
+          >
+            The Essence of Yatra
+          </h2>
+        </Fade>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <InstrumentCard
+            delay={0.05}
+            title="The Tentacle Grab"
+            body="Your digital footprint is more than just a list of repos. It's your engineering DNA. We use deep semantic analysis to distill your history into a clear map of your actual capabilities. We find the gold you've already created so you can stop starting from scratch."
+          />
+          <InstrumentCard
+            delay={0.15}
+            title="The Skill Radar"
+            body="Stop looking at your skills as a checklist. See them as a constellation. Our Radar visualizes your technical soul, highlighting your Radiant Strengths and identifying the Quiet Zones that need a little more light. It's a compass that always points toward your potential."
+          />
+          <InstrumentCard
+            delay={0.25}
+            title="Adaptive Living Roadmaps"
+            body="Most roadmaps are rigid and stressful. Ours is alive. It breathes with you—slowing down when the waves of life are high and picking up speed when you are in the flow. It provides the structure of a plan with the grace of a mentor."
+          />
+        </div>
+      </div>
+
+      {/* ══ D: SMALL WINS ══ */}
+      <div className="relative z-20 max-w-2xl mx-auto px-6 lg:px-0">
+        <Divider />
+
+        <section className="py-20">
+          <Fade>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: "rgba(27,59,24,0.35)" }}>
+              Culture of Small Wins
+            </p>
+            <h2
+              className="font-black tracking-tight leading-[1.1] mb-8"
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3rem)", color: "#1B3B18" }}
+            >
+              Tiny splashes create<br />great voyages.
+            </h2>
+          </Fade>
+          <Fade delay={0.1}>
+            <p className="text-lg font-medium leading-relaxed" style={{ color: "rgba(27,59,24,0.68)" }}>
+              We don&apos;t wait for the destination to celebrate. In Yatra, every fixed bug and every hour
+              of deep focus is a &ldquo;Pearl.&rdquo; We help you collect these pearls daily to prove to yourself
+              that you are moving forward, even when the shore seems far away.
+            </p>
+          </Fade>
+          <Fade delay={0.2}>
+            <p className="text-lg font-medium leading-relaxed mt-5" style={{ color: "rgba(27,59,24,0.68)" }}>
+              This is how we defeat burnout—one small win at a time.
             </p>
           </Fade>
         </section>
 
         <Divider />
 
-        {/* ── FINAL CTA ── */}
-        <section className="py-20 text-center">
+        {/* ══ E: FINAL GATEWAY ══ */}
+        <section className="py-24 text-center">
           <Fade>
-            <p
-              className="text-[10px] font-black uppercase tracking-[0.4em] mb-6"
-              style={{ color: "rgba(45,45,45,0.35)" }}
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(27,59,24,0.35)" }}>
+              The Reef
+            </p>
+            <h2
+              className="font-black tracking-tight leading-tight mb-3"
+              style={{ fontSize: "clamp(2.4rem, 6vw, 4.5rem)", color: "#1B3B18" }}
             >
-              Your voyage starts here
+              Your shore is waiting.
+            </h2>
+            <p className="text-xl font-medium mb-12" style={{ color: "rgba(27,59,24,0.55)" }}>
+              Ready to leave the chaos behind?
             </p>
           </Fade>
-
           <Fade delay={0.1}>
-            <p
-              className="text-lg font-medium leading-relaxed max-w-lg mx-auto mb-12"
-              style={{ color: "rgba(45,45,45,0.65)" }}
-            >
-              A grand voyage is just a collection of tiny splashes. We celebrate
-              the &lsquo;Small Wins&rsquo; because that&apos;s where the growth
-              happens. We don&apos;t care how fast you swim—we care that
-              you&apos;re moving with intention.
-            </p>
-          </Fade>
-
-          <Fade delay={0.2}>
-            <GetStartedButton />
-          </Fade>
-
-          <Fade delay={0.3}>
-            <p
-              className="mt-5 text-xs font-medium"
-              style={{ color: "rgba(45,45,45,0.4)" }}
-            >
-              Free 7-day trial · No credit card required
-            </p>
+            <CTAButton />
           </Fade>
         </section>
       </div>
 
-      {/* ── SHIP FOOTER IMAGE ── */}
-      <div className="relative z-20 w-full mt-4">
-        <Image
-          src="/assets/main/ship_in_sea_nev.png"
-          alt="A ship sailing into the horizon"
-          width={1440}
-          height={600}
-          className="w-full h-auto object-cover"
-          style={{ display: "block" }}
-        />
+      {/* ══ CORALS — animated bottom ══ */}
+      <div className="relative z-20 w-full overflow-hidden" style={{ marginTop: "-2px" }}>
+        <motion.div
+          animate={{ rotate: [-1, 1, -1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: "bottom center" }}
+        >
+          <Image
+            src="/assets/main/coralls.png"
+            alt=""
+            width={1440}
+            height={400}
+            className="w-full h-auto object-cover object-bottom"
+            style={{ display: "block" }}
+          />
+        </motion.div>
       </div>
+
+      {/* ══ FOOTER ══ */}
+      <footer
+        className="relative z-20 py-8 px-6 text-center"
+        style={{ background: "rgba(27,59,24,0.04)", borderTop: "1px solid rgba(27,59,24,0.08)" }}
+      >
+        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "rgba(27,59,24,0.35)" }}>
+          Moving with intention
+        </p>
+        <p className="text-xs font-medium mt-2" style={{ color: "rgba(27,59,24,0.25)" }}>
+          &copy; 2026 Yatra
+        </p>
+      </footer>
     </div>
   );
 }
