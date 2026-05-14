@@ -1,24 +1,45 @@
+"use client";
+
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <footer className="mt-10 bg-white/20 backdrop-blur-3xl py-12 px-6 border-t border-white/20 shadow-[0_-10px_60px_rgba(255,255,255,0.15)] transition-all duration-700">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 className="text-2xl font-bold text-[#1B3B18] mb-2">Yatra</h3>
-          <p className="text-[#1B3B18]/70 text-sm">
-            Close the gap, shape the future.
-          </p>
+    <footer
+      className="w-full px-6 py-5"
+      style={{ background: "rgba(27,59,24,0.07)", borderTop: "1px solid rgba(27,59,24,0.08)" }}
+    >
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* logo */}
+        <div className="flex items-center gap-2 shrink-0">
+          <div
+            className="w-6 h-6 rounded-lg flex items-center justify-center"
+            style={{ background: "#D35400" }}
+          >
+            <span className="text-white font-black text-xs leading-none">Y</span>
+          </div>
+          <span className="text-sm font-black text-[#1B3B18]">Yatra</span>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-[#1B3B18]/80">
-          <a href="#">Assessment</a>
-          <a href="#">Roadmap</a>
-          <a href="#">Mentorship</a>
-          <a href="#">Privacy</a>
-        </div>
+        {/* links */}
+        <nav className="flex items-center gap-5">
+          {["About", "Terms of Service", "Navigation Support"].map((l) => (
+            <a
+              key={l}
+              href="#"
+              className="text-xs font-medium transition-colors duration-150"
+              style={{ color: "rgba(27,59,24,0.45)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#1B3B18")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(27,59,24,0.45)")}
+            >
+              {l}
+            </a>
+          ))}
+        </nav>
 
-        <div className="text-sm text-[#1B3B18]/60 text-center md:text-right">
-          &copy; 2026 Yatra. All rights reserved.
-        </div>
+        {/* mantra */}
+        <p className="text-xs font-medium" style={{ color: "rgba(27,59,24,0.35)" }}>
+          Moving with intention. 🌿
+        </p>
       </div>
     </footer>
   );

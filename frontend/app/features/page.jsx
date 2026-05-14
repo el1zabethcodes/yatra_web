@@ -475,8 +475,6 @@ export default function FeaturesPage() {
           </div>
         </Fade>
       </div>
-
-      <Footer />
     </div>
   );
 }

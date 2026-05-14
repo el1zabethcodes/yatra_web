@@ -9,7 +9,6 @@ export default function PricingPage() {
       <div className="flex-1">
         <YatraPricing />
       </div>
-      <Footer />
     </div>
   );
 }
