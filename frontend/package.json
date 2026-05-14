@@ -3,21 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "prune": "npm prune",
+    "dedupe": "npm dedupe"
   },
   "dependencies": {
-    "framer-motion": "^12.0.0",
-    "groq-sdk": "^1.2.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.18.2",
     "lucide-react": "^0.460.0",
     "next": "^16.2.6",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwind-merge": "^2.5.4",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^3.4.0"
+    "@types/node": "^20.17.6",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.14"
   }
 }
