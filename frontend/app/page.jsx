@@ -312,12 +312,12 @@ export default function HomePage() {
           </div>
 
           {/* side image */}
-          <Fade delay={0.15} className="shrink-0 w-full md:w-[280px] lg:w-[340px]">
+          <Fade delay={0.15} className="shrink-0 w-full md:w-[420px] lg:w-[520px]">
             <Image
               src="/assets/main/2corrals.png"
               alt=""
-              width={340}
-              height={420}
+              width={520}
+              height={640}
               className="w-full h-auto object-contain"
               style={{ filter: "drop-shadow(0 12px 32px rgba(27,59,24,0.14))" }}
             />
