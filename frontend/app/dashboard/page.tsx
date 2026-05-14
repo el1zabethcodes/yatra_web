@@ -25,7 +25,7 @@ const TABS: Record<DashboardTabKey, DashboardTabComponent> = {
 };
 
 /**
- * РіРѕР»РѕРІРЅР° СЃС‚РѕСЂС–РЅРєР° РґР°С€Р±РѕСЂРґСѓ
+ * головна сторінка дашборду
  */
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<DashboardTabKey>("dashboard");
@@ -34,7 +34,7 @@ export default function DashboardPage() {
   
   const ActiveComponent = TABS[activeTab];
 
-  /* СЂРµРґРёСЂРµРєС‚ РЅР° Р»РѕРіС–РЅ СЏРєС‰Рѕ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРёР№ */
+  /* редирект на логін якщо не авторизований */
   useEffect(() => {
     if (!loading && !user) {
       router.replace("/login");
@@ -73,7 +73,7 @@ export default function DashboardPage() {
         </AnimatePresence>
       </main>
 
-      {/* РїР»Р°РІР°СЋС‡Р° РЅР°РІС–РіР°С†С–СЏ */}
+      {/* плаваюча навігація */}
       <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <div className="fixed inset-0 pointer-events-none -z-10 bg-[linear-gradient(180deg,#FDFCFB_0%,#F7F4E8_100%)]" />

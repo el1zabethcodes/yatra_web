@@ -2,7 +2,7 @@
 import FeaturesSection from "@/features/landing/FeaturesSection";
 
 /**
- * СЃС‚РѕСЂС–РЅРєР° Р· РѕРїРёСЃРѕРј РјРѕР¶Р»РёРІРѕСЃС‚РµР№ РїР»Р°С‚С„РѕСЂРјРё
+ * сторінка з описом можливостей платформи
  */
 export default function FeaturesPage() {
   return (

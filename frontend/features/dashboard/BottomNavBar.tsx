@@ -11,10 +11,10 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Р“РѕР»РѕРІРЅР°", icon: LayoutDashboard, tab: "dashboard" },
-  { label: "РљР°СЂС‚Р°", icon: Map, tab: "roadmap" },
-  { label: "РњРµРЅС‚РѕСЂ", icon: MessageCircle, tab: "mentor" },
-  { label: "РђРєР°СѓРЅС‚", icon: UserCircle, tab: "account" },
+  { label: "Головна", icon: LayoutDashboard, tab: "dashboard" },
+  { label: "Карта", icon: Map, tab: "roadmap" },
+  { label: "Ментор", icon: MessageCircle, tab: "mentor" },
+  { label: "Акаунт", icon: UserCircle, tab: "account" },
 ];
 
 interface BottomNavBarProps {
@@ -23,14 +23,14 @@ interface BottomNavBarProps {
 }
 
 /**
- * РЅРёР¶РЅСЏ РЅР°РІС–РіР°С†С–Р№РЅР° РїР°РЅРµР»СЊ РґР°С€Р±РѕСЂРґСѓ
+ * нижня навігаційна панель дашборду
  */
 export default function BottomNavBar({ activeTab, setActiveTab }: BottomNavBarProps) {
   return (
     <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center pointer-events-none px-4">
       <nav
         role="navigation"
-        aria-label="РќР°РІС–РіР°С†С–СЏ РґР°С€Р±РѕСЂРґСѓ"
+        aria-label="Навігація дашборду"
         className="pointer-events-auto flex items-center p-1.5 bg-background/80 backdrop-blur-md border border-surface/50 rounded-full shadow-2xl"
       >
         {NAV_ITEMS.map(({ label, icon: Icon, tab }) => {

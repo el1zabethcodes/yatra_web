@@ -4,8 +4,8 @@ import { usePathname } from "next/navigation";
 import Footer from "./Footer";
 
 /**
- * РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РІРёР±С–СЂРєРѕРІРѕРіРѕ РїРѕРєР°Р·Сѓ РїС–РґРІР°Р»Сѓ
- * РЅРµ РїРѕРєР°Р·СѓС”РјРѕ РїС–РґРІР°Р» Сѓ РґР°С€Р±РѕСЂРґС–
+ * компонент для вибіркового показу підвалу
+ * не показуємо підвал у дашборді
  */
 export default function FooterGate() {
   const pathname = usePathname();

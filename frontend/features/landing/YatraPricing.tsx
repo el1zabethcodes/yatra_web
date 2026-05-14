@@ -8,12 +8,12 @@ const PLANS = [
   {
     name: "Explorer",
     price: "0",
-    description: "Р”Р»СЏ С‚РёС…, С…С‚Рѕ С‚С–Р»СЊРєРё РїРѕС‡РёРЅР°С” СЃРІС–Р№ С€Р»СЏС….",
+    description: "Для тих, хто тільки починає свій шлях.",
     features: [
-      "Р‘Р°Р·РѕРІРёР№ AI РјРµРЅС‚РѕСЂ",
-      "РћС†С–РЅРєР° РЅР°РІРёС‡РѕРє (Skill Radar)",
-      "РЎРїС–Р»СЊРЅРѕС‚Р° РјР°РЅРґСЂС–РІРЅРёРєС–РІ",
-      "Р©РѕРґРµРЅРЅС– РјР°Р»С– РїРµСЂРµРјРѕРіРё",
+      "Базовий AI ментор",
+      "Оцінка навичок (Skill Radar)",
+      "Спільнота мандрівників",
+      "Щоденні малі перемоги",
     ],
     icon: Anchor,
     color: "#1B3B18",
@@ -21,12 +21,12 @@ const PLANS = [
   {
     name: "Navigator",
     price: "499",
-    description: "РћРїС‚РёРјР°Р»СЊРЅРёР№ РІРёР±С–СЂ РґР»СЏ Р°РєС‚РёРІРЅРѕРіРѕ СЂРѕСЃС‚Сѓ.",
+    description: "Оптимальний вибір для активного росту.",
     features: [
-      "Р РѕР·С€РёСЂРµРЅРёР№ AI РјРµРЅС‚РѕСЂ Kavi",
-      "РџРµСЂСЃРѕРЅР°Р»СЊРЅР° РєР°СЂС‚Р° РЅР° 30 РґРЅС–РІ",
-      "РђРЅР°Р»С–Р· СЂРµР·СЋРјРµ С‚Р° РїРѕСЂС‚С„РѕР»С–Рѕ",
-      "РџСЂС–РѕСЂРёС‚РµС‚РЅР° РїС–РґС‚СЂРёРјРєР°",
+      "Розширений AI ментор Kavi",
+      "Персональна карта на 30 днів",
+      "Аналіз резюме та портфоліо",
+      "Пріоритетна підтримка",
     ],
     icon: Compass,
     color: "#D35400",
@@ -35,12 +35,12 @@ const PLANS = [
   {
     name: "Captain",
     price: "999",
-    description: "РџРѕРІРЅРёР№ РєРѕРЅС‚СЂРѕР»СЊ РЅР°Рґ РІР°С€РѕСЋ РєР°СЂ'С”СЂРѕСЋ.",
+    description: "Повний контроль над вашою кар'єрою.",
     features: [
-      "Р‘РµР·Р»С–РјС–С‚РЅРёР№ AI РјРµРЅС‚РѕСЂ 24/7",
-      "Р”РёРЅР°РјС–С‡РЅР° РєР°СЂС‚Р° СЂРѕР·РІРёС‚РєСѓ",
-      "РџС–РґРіРѕС‚РѕРІРєР° РґРѕ С–РЅС‚РµСЂРІ'СЋ Р· РЁР†",
-      "Р•РєСЃРєР»СЋР·РёРІРЅС– РІРѕСЂРєС€РѕРїРё",
+      "Безлімітний AI ментор 24/7",
+      "Динамічна карта розвитку",
+      "Підготовка до інтерв'ю з ШІ",
+      "Ексклюзивні воркшопи",
     ],
     icon: Crown,
     color: "#6B7D56",
@@ -48,7 +48,7 @@ const PLANS = [
 ];
 
 /**
- * РєРѕРјРїРѕРЅРµРЅС‚ СЃС‚РѕСЂС–РЅРєРё С†С–РЅ
+ * компонент сторінки цін
  */
 export default function YatraPricing() {
   return (
@@ -56,10 +56,10 @@ export default function YatraPricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20 space-y-4">
           <h1 className="text-4xl md:text-6xl font-black text-primary tracking-tight">
-            РћР±РµСЂС–С‚СЊ СЃРІС–Р№ <span className="text-secondary italic">РєСѓСЂСЃ.</span>
+            Оберіть свій <span className="text-secondary italic">курс.</span>
           </h1>
           <p className="text-lg text-primary/50 max-w-2xl mx-auto font-medium">
-            РџСЂРѕР·РѕСЂС– С‚Р°СЂРёС„Рё РґР»СЏ Р±СѓРґСЊ-СЏРєРѕРіРѕ РµС‚Р°РїСѓ РІР°С€РѕС— РїРѕРґРѕСЂРѕР¶С–. Р‘РµР· РїСЂРёС…РѕРІР°РЅРёС… РєРѕРјС–СЃС–Р№, С‚С–Р»СЊРєРё С‡РёСЃС‚РёР№ СЂРѕР·РІРёС‚РѕРє.
+            Прозорі тарифи для будь-якого етапу вашої подорожі. Без прихованих комісій, тільки чистий розвиток.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function YatraPricing() {
             >
               {plan.popular && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-surface px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
-                  РќР°Р№РїРѕРїСѓР»СЏСЂРЅС–С€РёР№
+                  Найпопулярніший
                 </div>
               )}
 
@@ -96,8 +96,8 @@ export default function YatraPricing() {
               </div>
 
               <div className="mb-8 flex items-baseline gap-1">
-                <span className="text-4xl font-black text-primary">в‚ґ{plan.price}</span>
-                <span className="text-primary/60 text-sm font-bold uppercase tracking-widest">/РјС–СЃСЏС†СЊ</span>
+                <span className="text-4xl font-black text-primary">₴{plan.price}</span>
+                <span className="text-primary/60 text-sm font-bold uppercase tracking-widest">/місяць</span>
               </div>
 
               <ul className="flex-1 space-y-4 mb-10">
@@ -118,7 +118,7 @@ export default function YatraPricing() {
                   ${plan.popular ? "bg-primary text-surface hover:bg-secondary shadow-lg shadow-secondary/20" : "bg-surface text-primary hover:bg-surface/80"}
                 `}
               >
-                РћР±СЂР°С‚Рё {plan.name}
+                Обрати {plan.name}
               </Link>
             </motion.div>
           ))}
@@ -126,7 +126,7 @@ export default function YatraPricing() {
 
         <div className="mt-20 text-center">
           <p className="text-sm text-primary/60 font-bold uppercase tracking-widest">
-            РџРѕС‚СЂС–Р±РµРЅ С–РЅРґРёРІС–РґСѓР°Р»СЊРЅРёР№ РїР»Р°РЅ РґР»СЏ СѓРЅС–РІРµСЂСЃРёС‚РµС‚Сѓ? <Link href="#" className="text-primary hover:text-secondary transition-colors underline underline-offset-4">Р—РІ'СЏР¶С–С‚СЊСЃСЏ Р· РЅР°РјРё</Link>
+            Потрібен індивідуальний план для університету? <Link href="#" className="text-primary hover:text-secondary transition-colors underline underline-offset-4">Зв'яжіться з нами</Link>
           </p>
         </div>
       </div>

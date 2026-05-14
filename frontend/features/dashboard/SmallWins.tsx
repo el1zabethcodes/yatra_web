@@ -4,30 +4,30 @@ import { motion } from "framer-motion";
 
 const WINS = [
   {
-    emoji: "рџђљ",
-    title: "РџРµСЂС€РёР№ РєРѕРјС–С‚ РЅР° GitHub",
-    desc: "Р’Рё Р·СЂРѕР±РёР»Рё СЃРІС–Р№ РїРµСЂС€РёР№ РІРЅРµСЃРѕРє Сѓ open-source.",
-    date: "2 РґРЅС– С‚РѕРјСѓ",
+    emoji: "🐚",
+    title: "Перший коміт на GitHub",
+    desc: "Ви зробили свій перший внесок у open-source.",
+    date: "2 дні тому",
     color: "#6B7D56",
   },
   {
     emoji: "рџЄё",
-    title: "РџРµСЂР»РёРЅР° CSS",
-    desc: "Р—Р°РІРµСЂС€РµРЅРѕ РјРѕРґСѓР»СЊ РїСЂРѕСЃСѓРЅСѓС‚РѕРіРѕ Flexbox С‚Р° Grid.",
-    date: "5 РґРЅС–РІ С‚РѕРјСѓ",
+    title: "Перлина CSS",
+    desc: "Завершено модуль просунутого Flexbox та Grid.",
+    date: "5 днів тому",
     color: "#D35400",
   },
   {
     emoji: "рџЊЉ",
-    title: "РҐРІРёР»СЏ Р»РѕРіС–РєРё",
-    desc: "Р’РёСЂС–С€РµРЅРѕ 10 Р°Р»РіРѕСЂРёС‚РјС–С‡РЅРёС… Р·Р°РґР°С‡ РїРѕСЃРїС–Р»СЊ.",
-    date: "1 С‚РёР¶РґРµРЅСЊ С‚РѕРјСѓ",
+    title: "Хвиля логіки",
+    desc: "Вирішено 10 алгоритмічних задач поспіль.",
+    date: "1 тиждень тому",
     color: "#1B3B18",
   },
 ];
 
 /**
- * СЃРїРёСЃРѕРє РЅРµРІРµР»РёРєРёС… РґРѕСЃСЏРіРЅРµРЅСЊ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
+ * список невеликих досягнень користувача
  */
 export default function SmallWins() {
   return (
@@ -40,7 +40,7 @@ export default function SmallWins() {
           transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
           className="flex items-center gap-4 px-5 py-4 bg-background border border-surface rounded-2xl hover:border-surface/80 transition-colors"
         >
-          {/* Р·РЅР°С‡РѕРє РїРµСЂР»РёРЅРё */}
+          {/* значок перлини */}
           <div
             className="w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0"
             style={{

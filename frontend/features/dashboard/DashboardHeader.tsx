@@ -8,12 +8,12 @@ import { Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "@/shared/lib/AuthContext";
 
 const NAV_LINKS = [
-  { label: "РњРѕР¶Р»РёРІРѕСЃС‚С–", href: "/features" },
-  { label: "Р¦С–РЅРё", href: "/pricing" },
+  { label: "Можливості", href: "/features" },
+  { label: "Ціни", href: "/pricing" },
 ];
 
 /**
- * Р·Р°РіРѕР»РѕРІРѕРє РґР°С€Р±РѕСЂРґСѓ
+ * заголовок дашборду
  */
 export default function DashboardHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -56,7 +56,7 @@ export default function DashboardHeader() {
             <button
               onClick={handleLogout}
               className="p-2 rounded-full text-accent hover:bg-accent/10 transition-colors"
-              aria-label="Р’РёР№С‚Рё"
+              aria-label="Вийти"
             >
               <LogOut size={18} />
             </button>
@@ -66,7 +66,7 @@ export default function DashboardHeader() {
             type="button"
             className="md:hidden p-2 rounded-lg text-primary hover:bg-surface/50 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="РњРµРЅСЋ"
+            aria-label="Меню"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -98,7 +98,7 @@ export default function DashboardHeader() {
                   onClick={handleLogout}
                   className="text-sm font-bold text-accent"
                 >
-                  Р’РёР№С‚Рё
+                  Вийти
                 </button>
               </div>
             </div>

@@ -2,7 +2,7 @@
 import YatraPricing from "@/features/landing/YatraPricing";
 
 /**
- * СЃС‚РѕСЂС–РЅРєР° Р· С‚Р°СЂРёС„РЅРёРјРё РїР»Р°РЅР°РјРё
+ * сторінка з тарифними планами
  */
 export default function PricingPage() {
   return (

@@ -12,7 +12,7 @@ const inputCls =
   "w-full px-5 py-4 rounded-2xl bg-background border border-surface text-primary font-medium placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all";
 
 /**
- * СЃС‚РѕСЂС–РЅРєР° РІС…РѕРґСѓ С‚Р° СЂРµС”СЃС‚СЂР°С†С–С—
+ * сторінка входу та реєстрації
  */
 export default function LoginPage() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function LoginPage() {
 
   const [tab, setTab] = useState("signin");
 
-  /* РІС…С–Рґ */
+  /* вхід */
   const [siEmail, setSiEmail] = useState("");
   const [siPass, setSiPass] = useState("");
   const [showSi, setShowSi] = useState(false);
@@ -28,7 +28,7 @@ export default function LoginPage() {
   const [siError, setSiError] = useState("");
   const [siLoading, setSiLoading] = useState(false);
 
-  /* СЂРµС”СЃС‚СЂР°С†С–СЏ */
+  /* реєстрація */
   const [suName, setSuName] = useState("");
   const [suEmail, setSuEmail] = useState("");
   const [suPass, setSuPass] = useState("");
@@ -45,7 +45,7 @@ export default function LoginPage() {
 
     const user = authenticate(siEmail, siPass);
     if (!user) {
-      setSiError("РќРµРІС–СЂРЅРёР№ email Р°Р±Рѕ РїР°СЂРѕР»СЊ. РЎРїСЂРѕР±СѓР№С‚Рµ С‚РµСЃС‚РѕРІС– Р°РєР°СѓРЅС‚Рё.");
+      setSiError("Невірний email або пароль. Спробуйте тестові акаунти.");
       setSiLoading(false);
       return;
     }
@@ -63,7 +63,7 @@ export default function LoginPage() {
 
     const newUser = registerUser({ name: suName, email: suEmail, password: suPass });
     if (!newUser) {
-      setSuError("Р¦РµР№ email РІР¶Рµ Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅРёР№.");
+      setSuError("Цей email вже зареєстрований.");
       return;
     }
 
@@ -78,18 +78,18 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden">
-      {/* Р»РѕРіРѕС‚РёРї */}
+      {/* логотип */}
       <Link href="/" className="mb-10 text-3xl font-black tracking-tight text-primary">
         Yatra
       </Link>
 
-      {/* РєР°СЂС‚РєР° С„РѕСЂРјРё */}
+      {/* картка форми */}
       <div className="w-full max-w-md bg-background border border-surface rounded-[40px] p-8 shadow-sm">
-        {/* РїРµСЂРµРјРёРєР°С‡ РІРєР»Р°РґРѕРє */}
+        {/* перемикач вкладок */}
         <div className="flex p-1 bg-surface/30 border border-surface rounded-2xl mb-10">
           {[
-            { id: "signin", label: "РЈРІС–Р№С‚Рё" },
-            { id: "signup", label: "Р РµС”СЃС‚СЂР°С†С–СЏ" },
+            { id: "signin", label: "Увійти" },
+            { id: "signup", label: "Реєстрація" },
           ].map((t) => (
             <button
               key={t.id}
@@ -128,7 +128,7 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="signin-password" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">РџР°СЂРѕР»СЊ</label>
+                <label htmlFor="signin-password" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">Пароль</label>
                 <div className="relative">
                   <input
                     id="signin-password"
@@ -136,14 +136,14 @@ export default function LoginPage() {
                     required
                     value={siPass}
                     onChange={(e) => { setSiPass(e.target.value); setSiError(""); }}
-                    placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў"
+                    placeholder="••••••••"
                     className={`${inputCls} pr-12`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowSi(!showSi)}
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-primary/60 hover:text-primary"
-                    aria-label={showSi ? "РџСЂРёС…РѕРІР°С‚Рё РїР°СЂРѕР»СЊ" : "РџРѕРєР°Р·Р°С‚Рё РїР°СЂРѕР»СЊ"}
+                    aria-label={showSi ? "Приховати пароль" : "Показати пароль"}
                   >
                     {showSi ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -163,9 +163,9 @@ export default function LoginPage() {
                   }`}>
                     {remember && <CheckCircle2 size={12} className="text-surface" />}
                   </div>
-                  <span className="text-sm font-medium text-primary/60">Р—Р°РїР°Рј'СЏС‚Р°С‚Рё РјРµРЅРµ</span>
+                  <span className="text-sm font-medium text-primary/60">Запам'ятати мене</span>
                 </label>
-                <a href="#" className="text-sm font-bold text-accent hover:opacity-80 transition-opacity">Р—Р°Р±СѓР»Рё РїР°СЂРѕР»СЊ?</a>
+                <a href="#" className="text-sm font-bold text-accent hover:opacity-80 transition-opacity">Забули пароль?</a>
               </div>
 
               {siError && (
@@ -183,7 +183,7 @@ export default function LoginPage() {
                   ${siLoading ? "bg-primary/50 text-surface cursor-not-allowed" : "bg-primary text-surface hover:bg-secondary"}
                 `}
               >
-                {siLoading ? "Р’С…РѕРґРёРјРѕ..." : "РЈРІС–Р№С‚Рё"}
+                {siLoading ? "Входимо..." : "Увійти"}
               </button>
             </motion.form>
           ) : (
@@ -196,20 +196,20 @@ export default function LoginPage() {
               {suSuccess ? (
                 <div className="text-center py-8 space-y-4">
                   <CheckCircle2 size={48} className="text-secondary mx-auto" />
-                  <p className="text-xl font-black text-primary">РђРєР°СѓРЅС‚ СЃС‚РІРѕСЂРµРЅРѕ!</p>
-                  <p className="text-sm text-primary/60">РџРѕРІРµСЂС‚Р°С”РјРѕСЃСЊ РґРѕ РІС…РѕРґСѓ...</p>
+                  <p className="text-xl font-black text-primary">Акаунт створено!</p>
+                  <p className="text-sm text-primary/60">Повертаємось до входу...</p>
                 </div>
               ) : (
                 <form onSubmit={handleSignUp} className="space-y-6">
                   <div className="space-y-2">
-                    <label htmlFor="signup-name" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">РџРѕРІРЅРµ С–Рј'СЏ</label>
+                    <label htmlFor="signup-name" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">Повне ім'я</label>
                     <input
                       id="signup-name"
                       type="text"
                       required
                       value={suName}
                       onChange={(e) => setSuName(e.target.value)}
-                      placeholder="Р’Р°С€Рµ С–Рј'СЏ"
+                      placeholder="Ваше ім'я"
                       className={inputCls}
                     />
                   </div>
@@ -226,7 +226,7 @@ export default function LoginPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="signup-password" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">РџР°СЂРѕР»СЊ</label>
+                    <label htmlFor="signup-password" className="block text-[10px] font-black uppercase tracking-widest text-primary/60">Пароль</label>
                     <div className="relative">
                       <input
                         id="signup-password"
@@ -235,14 +235,14 @@ export default function LoginPage() {
                         minLength={8}
                         value={suPass}
                         onChange={(e) => setSuPass(e.target.value)}
-                        placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў"
+                        placeholder="••••••••"
                         className={`${inputCls} pr-12`}
                       />
                       <button
                         type="button"
                         onClick={() => setShowSu(!showSu)}
                         className="absolute right-4 top-1/2 -translate-y-1/2 text-primary/60 hover:text-primary"
-                        aria-label={showSu ? "РџСЂРёС…РѕРІР°С‚Рё РїР°СЂРѕР»СЊ" : "РџРѕРєР°Р·Р°С‚Рё РїР°СЂРѕР»СЊ"}
+                        aria-label={showSu ? "Приховати пароль" : "Показати пароль"}
                       >
                         {showSu ? <EyeOff size={18} /> : <Eye size={18} />}
                       </button>
@@ -257,7 +257,7 @@ export default function LoginPage() {
                     type="submit"
                     className="w-full py-4 rounded-2xl bg-primary text-surface font-black uppercase tracking-widest text-sm shadow-xl hover:bg-secondary transition-all"
                   >
-                    Р—Р°СЂРµС”СЃС‚СЂСѓРІР°С‚РёСЃСЏ
+                    Зареєструватися
                   </button>
                 </form>
               )}
@@ -267,11 +267,11 @@ export default function LoginPage() {
 
         <div className="flex items-center gap-4 my-8">
           <div className="flex-1 h-px bg-surface" />
-          <span className="text-[10px] font-black uppercase tracking-widest text-primary/50">Р°Р±Рѕ</span>
+          <span className="text-[10px] font-black uppercase tracking-widest text-primary/50">або</span>
           <div className="flex-1 h-px bg-surface" />
         </div>
 
-        {/* СЃРѕС†С–Р°Р»СЊРЅС– РјРµСЂРµР¶С– */}
+        {/* соціальні мережі */}
         <div className="grid grid-cols-3 gap-3">
           {[
             { icon: Github, label: "GitHub" },
@@ -289,14 +289,14 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* С‚РµСЃС‚РѕРІС– Р°РєР°СѓРЅС‚Рё */}
+      {/* тестові акаунти */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
         className="mt-10 w-full max-w-md bg-background border border-surface rounded-[32px] p-6 space-y-4"
       >
-        <p className="text-[10px] font-black uppercase tracking-widest text-primary/60">РўРµСЃС‚РѕРІС– Р°РєР°СѓРЅС‚Рё</p>
+        <p className="text-[10px] font-black uppercase tracking-widest text-primary/60">Тестові акаунти</p>
         <div className="space-y-3">
           {TEST_USERS.map((u) => (
             <button
@@ -317,7 +317,7 @@ export default function LoginPage() {
       </motion.div>
 
       <Link href="/" className="mt-8 text-sm font-bold text-primary/60 hover:text-primary transition-colors">
-        в†ђ РџРѕРІРµСЂРЅСѓС‚РёСЃСЏ РЅР° РіРѕР»РѕРІРЅСѓ
+        ← Повернутися на головну
       </Link>
     </div>
   );

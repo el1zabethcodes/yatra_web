@@ -6,12 +6,12 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "РњРѕР¶Р»РёРІРѕСЃС‚С–", href: "/features" },
-  { label: "Р¦С–РЅРё", href: "/pricing" },
+  { label: "Можливості", href: "/features" },
+  { label: "Ціни", href: "/pricing" },
 ];
 
 /**
- * РєРѕРјРїРѕРЅРµРЅС‚ РІРµСЂС…РЅСЊРѕС— РЅР°РІС–РіР°С†С–С—
+ * компонент верхньої навігації
  */
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-surface/30 bg-background/80 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Р»РѕРіРѕС‚РёРї */}
+          {/* логотип */}
           <Link
             href="/"
             className="text-2xl font-black tracking-tight text-primary hover:opacity-80 transition-opacity"
@@ -28,7 +28,7 @@ export default function Header() {
             Yatra
           </Link>
 
-          {/* РґРµСЃРєС‚РѕРїРЅР° РЅР°РІС–РіР°С†С–СЏ */}
+          {/* десктопна навігація */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
@@ -41,29 +41,29 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* РєРЅРѕРїРєРё РґС–Р№ */}
+          {/* кнопки дій */}
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/login"
               className="px-6 py-2 rounded-full bg-primary text-surface text-sm font-bold uppercase tracking-wider hover:bg-secondary transition-colors"
             >
-              РЈРІС–Р№С‚Рё
+              Увійти
             </Link>
           </div>
 
-          {/* РјРѕР±С–Р»СЊРЅРµ РјРµРЅСЋ (Р±СѓСЂРіРµСЂ) */}
+          {/* мобільне меню (бургер) */}
           <button
             type="button"
             className="md:hidden p-2 rounded-lg text-primary hover:bg-surface/50 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Р—Р°РєСЂРёС‚Рё РјРµРЅСЋ" : "Р’С–РґРєСЂРёС‚Рё РјРµРЅСЋ"}
+            aria-label={mobileOpen ? "Закрити меню" : "Відкрити меню"}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* РјРѕР±С–Р»СЊРЅР° РїР°РЅРµР»СЊ */}
+      {/* мобільна панель */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -88,7 +88,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 px-6 py-3 rounded-full bg-primary text-surface text-center text-sm font-bold uppercase tracking-wider"
               >
-                РЈРІС–Р№С‚Рё
+                Увійти
               </Link>
             </nav>
           </motion.div>

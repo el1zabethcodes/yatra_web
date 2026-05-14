@@ -6,7 +6,7 @@ import { Map, Anchor } from "lucide-react";
 import type { DashboardTabKey } from "@/app/dashboard/page";
 
 /**
- * РІРєР»Р°РґРєР° РґРѕСЂРѕР¶РЅСЊРѕС— РєР°СЂС‚Рё (РІ СЂРѕР·СЂРѕР±С†С–)
+ * вкладка дорожньої карти (в розробці)
  */
 export default function RoadmapTab({ setActiveTab }: { setActiveTab: (tab: DashboardTabKey) => void }) {
   return (
@@ -16,7 +16,7 @@ export default function RoadmapTab({ setActiveTab }: { setActiveTab: (tab: Dashb
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4"
     >
-      {/* С–Р»СЋСЃС‚СЂР°С†С–СЏ */}
+      {/* ілюстрація */}
       <motion.div
         animate={{ rotate: [-1, 1, -1], y: [0, -5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -31,20 +31,20 @@ export default function RoadmapTab({ setActiveTab }: { setActiveTab: (tab: Dashb
         />
       </motion.div>
 
-      {/* РєРѕРЅС‚РµРЅС‚ */}
+      {/* контент */}
       <div className="bg-background border border-surface rounded-[40px] px-8 py-10 max-w-md shadow-sm">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Map size={18} className="text-accent" />
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">
-            РњРѕСЏ РљР°СЂС‚Р°
+            Моя Карта
           </span>
         </div>
         <h2 className="text-2xl font-black text-primary mb-3">
-          РљР°СЂС‚Р° РІ РїСЂРѕС†РµСЃС– СЃС‚РІРѕСЂРµРЅРЅСЏ
+          Карта в процесі створення
         </h2>
         <p className="text-sm text-primary/60 font-medium leading-relaxed">
-          Р’Р°С€Р° РїРµСЂСЃРѕРЅР°Р»СЊРЅР° РґРѕСЂРѕР¶РЅСЏ РєР°СЂС‚Р° РЅР°РІС‡Р°РЅРЅСЏ РїСЂРѕРєР»Р°РґР°С” С€Р»СЏС… РєСЂС–Р·СЊ С‚СѓРјР°РЅ. 
-          Р—Р°РІРµСЂС€С–С‚СЊ Р°РЅР°Р»С–Р· РїСЂРѕС„С–Р»СЋ, С‰РѕР± РІС–РґРєСЂРёС‚Рё РјР°СЂС€СЂСѓС‚.
+          Ваша персональна дорожня карта навчання прокладає шлях крізь туман. 
+          Завершіть аналіз профілю, щоб відкрити маршрут.
         </p>
         <button
           type="button"
@@ -52,11 +52,11 @@ export default function RoadmapTab({ setActiveTab }: { setActiveTab: (tab: Dashb
           className="mt-8 inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl bg-accent text-surface font-black text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:-translate-y-1 transition-all"
         >
           <Anchor size={16} />
-          РџРѕС‡Р°С‚Рё Р°РЅР°Р»С–Р·
+          Почати аналіз
         </button>
       </div>
 
-      {/* РґРµРєРѕСЂР°С‚РёРІРЅС– РєСЂР°РїРєРё */}
+      {/* декоративні крапки */}
       <div className="flex gap-2.5 mt-10">
         {[0, 1, 2, 3, 4].map((i) => (
           <motion.div

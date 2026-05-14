@@ -43,7 +43,7 @@ interface SkillRadarProps {
 }
 
 /**
- * РєРѕРјРїРѕРЅРµРЅС‚ СЂР°РґР°СЂР° РЅР°РІРёС‡РѕРє (SVG РіСЂР°С„С–Рє)
+ * компонент радара навичок (SVG графік)
  */
 export default function SkillRadar({ scores }: SkillRadarProps) {
   const SKILLS = scores
@@ -66,7 +66,7 @@ export default function SkillRadar({ scores }: SkillRadarProps) {
           role="img"
           className="overflow-visible"
         >
-          {/* РєРѕРЅС†РµРЅС‚СЂРёС‡РЅС– РєС–Р»СЊС†СЏ */}
+          {/* концентричні кільця */}
           {RINGS.map((r, ri) => {
             const pts = Array.from({ length: SKILLS.length }, (_, i) => {
               const { x, y } = polarToXY(i * step, r * maxR);
@@ -84,7 +84,7 @@ export default function SkillRadar({ scores }: SkillRadarProps) {
             );
           })}
 
-          {/* РѕСЃС– */}
+          {/* осі */}
           {SKILLS.map((_, i) => {
             const { x, y } = polarToXY(i * step, maxR);
             return (
@@ -101,7 +101,7 @@ export default function SkillRadar({ scores }: SkillRadarProps) {
             );
           })}
 
-          {/* Р·Р°РїРѕРІРЅРµРЅРёР№ Р±Р°РіР°С‚РѕРєСѓС‚РЅРёРє РЅР°РІРёС‡РѕРє */}
+          {/* заповнений багатокутник навичок */}
           <motion.polygon
             points={points}
             className="fill-secondary/20 stroke-secondary"
@@ -113,7 +113,7 @@ export default function SkillRadar({ scores }: SkillRadarProps) {
             style={{ transformOrigin: `${CENTER}px ${CENTER}px` }}
           />
 
-          {/* С‚РѕС‡РєРё РЅР°РІРёС‡РѕРє */}
+          {/* точки навичок */}
           {SKILLS.map((s, i) => {
             const { x, y } = polarToXY(i * step, s.value * maxR);
             return (
@@ -134,7 +134,7 @@ export default function SkillRadar({ scores }: SkillRadarProps) {
         </svg>
       </div>
 
-      {/* Р»РµРіРµРЅРґР° */}
+      {/* легенда */}
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8">
         {SKILLS.map((s) => (
           <div key={s.label} className="flex items-center gap-2">

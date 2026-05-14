@@ -19,7 +19,7 @@ export default function PricingSection() {
           Plans for every <span className="text-[#D35400]">voyage</span>
         </h2>
         <p className="text-lg text-[#1B3B18]/70 mb-10 max-w-2xl mx-auto">
-          Beachcomber, Wayfinder, or Legend вЂ” compare tiers, try
+          Beachcomber, Wayfinder, or Legend — compare tiers, try
           Navigator&apos;s Lab, and pick the current that fits you.
         </p>
         <motion.div

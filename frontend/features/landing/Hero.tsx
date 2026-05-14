@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 /**
- * РіРѕР»РѕРІРЅР° СЃРµРєС†С–СЏ Р»РµРЅРґС–РЅРіСѓ
+ * головна секція лендінгу
  */
 export default function Hero() {
   return (
@@ -18,8 +18,8 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-primary leading-[1.1]">
-              Р’Р°С€ С€Р»СЏС… Сѓ СЃРІС–С‚С– IT <br />
-              <span className="text-secondary italic">РїРѕС‡РёРЅР°С”С‚СЊСЃСЏ С‚СѓС‚.</span>
+              Ваш шлях у світі IT <br />
+              <span className="text-secondary italic">починається тут.</span>
             </h1>
           </motion.div>
 
@@ -29,8 +29,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-primary/60 max-w-2xl mx-auto font-medium"
           >
-            РЎРїРѕРєС–Р№РЅР° С‚Р° СЂРѕР·СѓРјРЅР° РїР»Р°С‚С„РѕСЂРјР° РґР»СЏ РЅР°РІС–РіР°С†С–С— РєР°СЂ'С”СЂРѕСЋ. 
-            РњРё РґРѕРїРѕРјРѕР¶РµРјРѕ РІР°Рј РїРµСЂРµС‚РІРѕСЂРёС‚Рё С…Р°РѕСЃ РІРёР±РѕСЂСѓ РЅР° С‡С–С‚РєРёР№ РїР»Р°РЅ РґС–Р№.
+            Спокійна та розумна платформа для навігації кар'єрою. 
+            Ми допоможемо вам перетворити хаос вибору на чіткий план дій.
           </motion.p>
 
           <motion.div
@@ -43,18 +43,18 @@ export default function Hero() {
               href="/login"
               className="px-12 py-4 rounded-full bg-primary text-surface font-black uppercase tracking-widest text-sm hover:bg-secondary transition-all shadow-lg hover:shadow-secondary/20"
             >
-              РџРѕС‡Р°С‚Рё РїРѕРґРѕСЂРѕР¶
+              Почати подорож
             </Link>
             <Link
               href="#features"
               className="px-12 py-4 rounded-full border-2 border-primary/10 text-primary font-black uppercase tracking-widest text-sm hover:bg-surface transition-all"
             >
-              Р”С–Р·РЅР°С‚РёСЃСЊ Р±С–Р»СЊС€Рµ
+              Дізнатись більше
             </Link>
           </motion.div>
         </div>
 
-        {/* С–Р»СЋСЃС‚СЂР°С†С–СЏ */}
+        {/* ілюстрація */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -71,7 +71,7 @@ export default function Hero() {
         </motion.div>
       </div>
       
-      {/* С„РѕРЅРѕРІРёР№ РґРµРєРѕСЂ (РјС–РЅС–РјР°Р»С–СЃС‚РёС‡РЅРёР№) */}
+      {/* фоновий декор (мінімалістичний) */}
     </section>
   );
 }

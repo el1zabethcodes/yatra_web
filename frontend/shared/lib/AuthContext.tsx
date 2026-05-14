@@ -15,13 +15,13 @@ const AuthContext = createContext<AuthContextType | null>(null);
 const SESSION_KEY = "yatra_session_uid";
 
 /**
- * РїСЂРѕРІР°Р№РґРµСЂ РєРѕРЅС‚РµРєСЃС‚Сѓ Р°РІС‚РµРЅС‚РёС„С–РєР°С†С–С—
+ * провайдер контексту автентифікації
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  /* РІС–РґРЅРѕРІР»СЋС”РјРѕ СЃРµСЃС–СЋ Р· localStorage РїСЂРё Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅС– */
+  /* відновлюємо сесію з localStorage при завантаженні */
   useEffect(() => {
     try {
       const savedId = localStorage.getItem(SESSION_KEY);
@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (restored) setUser(restored);
       }
     } catch {
-      /* localStorage РЅРµРґРѕСЃС‚СѓРїРЅРёР№ (SSR) */
+      /* localStorage недоступний (SSR) */
     } finally {
       setLoading(false);
     }
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 /**
- * С…СѓРє РґР»СЏ РґРѕСЃС‚СѓРїСѓ РґРѕ РєРѕРЅС‚РµРєСЃС‚Сѓ Р°РІС‚РµРЅС‚РёС„С–РєР°С†С–С—
+ * хук для доступу до контексту автентифікації
  */
 export function useAuth() {
   const ctx = useContext(AuthContext);

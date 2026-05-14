@@ -17,7 +17,7 @@ const SUBSCRIPTION_COLORS: Record<string, { bg: string, border: string, text: st
 };
 
 /**
- * СЂСЏРґРѕРє С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕС„С–Р»СЋ
+ * рядок інформації профілю
  */
 function InfoRow({ icon: Icon, label, value, accent }: { icon: LucideIcon, label: string, value: string, accent: string }) {
   return (
@@ -41,7 +41,7 @@ function InfoRow({ icon: Icon, label, value, accent }: { icon: LucideIcon, label
 }
 
 /**
- * СЃРµРєС†С–СЏ Р·РјС–РЅРё РїР°СЂРѕР»СЏ
+ * секція зміни пароля
  */
 function PasswordReset() {
   const [open, setOpen] = useState(false);
@@ -74,8 +74,8 @@ function PasswordReset() {
           <KeyRound size={14} />
         </div>
         <div className="flex-1">
-          <p className="text-[10px] font-black uppercase tracking-widest text-primary/60">Р‘РµР·РїРµРєР°</p>
-          <p className="text-sm font-black text-primary">Р—РјС–РЅРёС‚Рё РїР°СЂРѕР»СЊ</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-primary/60">Безпека</p>
+          <p className="text-sm font-black text-primary">Змінити пароль</p>
         </div>
         <motion.div animate={{ rotate: open ? 90 : 0 }}>
           <ChevronRight size={16} className="text-primary/60" />
@@ -94,14 +94,14 @@ function PasswordReset() {
               {success ? (
                 <div className="flex items-center gap-2 py-4 justify-center text-secondary">
                   <CheckCircle2 size={18} />
-                  <span className="text-sm font-black uppercase tracking-widest">РџР°СЂРѕР»СЊ РѕРЅРѕРІР»РµРЅРѕ!</span>
+                  <span className="text-sm font-black uppercase tracking-widest">Пароль оновлено!</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {[
-                    { id: "current-password", label: "РџРѕС‚РѕС‡РЅРёР№ РїР°СЂРѕР»СЊ", val: current, set: setCurrent, show: showCur, toggle: () => setShowCur(!showCur) },
-                    { id: "new-password", label: "РќРѕРІРёР№ РїР°СЂРѕР»СЊ", val: next, set: setNext, show: showNew, toggle: () => setShowNew(!showNew) },
-                    { id: "confirm-password", label: "РџС–РґС‚РІРµСЂРґС–С‚СЊ РЅРѕРІРёР№", val: confirm, set: setConfirm, show: showCon, toggle: () => setShowCon(!showCon) },
+                    { id: "current-password", label: "Поточний пароль", val: current, set: setCurrent, show: showCur, toggle: () => setShowCur(!showCur) },
+                    { id: "new-password", label: "Новий пароль", val: next, set: setNext, show: showNew, toggle: () => setShowNew(!showNew) },
+                    { id: "confirm-password", label: "Підтвердіть новий", val: confirm, set: setConfirm, show: showCon, toggle: () => setShowCon(!showCon) },
                   ].map(({ id, label, val, set, show, toggle }) => (
                     <div key={label}>
                       <label htmlFor={id} className="block text-[10px] font-black uppercase tracking-widest text-primary/60 mb-2">
@@ -113,14 +113,14 @@ function PasswordReset() {
                           type={show ? "text" : "password"}
                           value={val}
                           onChange={(e) => set(e.target.value)}
-                          placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў"
+                          placeholder="••••••••"
                           className="w-full px-5 py-3 rounded-2xl bg-surface/20 border border-surface text-sm font-medium focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all pr-12"
                         />
                         <button
                           type="button"
                           onClick={toggle}
                           className="absolute right-4 top-1/2 -translate-y-1/2 text-primary/60 hover:text-primary"
-                          aria-label={show ? "РџСЂРёС…РѕРІР°С‚Рё РїР°СЂРѕР»СЊ" : "РџРѕРєР°Р·Р°С‚Рё РїР°СЂРѕР»СЊ"}
+                          aria-label={show ? "Приховати пароль" : "Показати пароль"}
                         >
                           {show ? <EyeOff size={16} /> : <Eye size={16} />}
                         </button>
@@ -136,7 +136,7 @@ function PasswordReset() {
                       ${canSubmit ? "bg-accent text-surface shadow-lg" : "bg-surface text-primary/50 cursor-not-allowed"}
                     `}
                   >
-                    РћРЅРѕРІРёС‚Рё РїР°СЂРѕР»СЊ
+                    Оновити пароль
                   </button>
                 </form>
               )}
@@ -149,7 +149,7 @@ function PasswordReset() {
 }
 
 /**
- * РіРѕР»РѕРІРЅРёР№ РєРѕРјРїРѕРЅРµРЅС‚ РІРєР»Р°РґРєРё Р°РєР°СѓРЅС‚Сѓ
+ * головний компонент вкладки акаунту
  */
 export default function AccountTab() {
   const { user, logout } = useAuth();
@@ -173,23 +173,23 @@ export default function AccountTab() {
 
   return (
     <div className="space-y-8">
-      {/* Р·Р°РіРѕР»РѕРІРѕРє */}
+      {/* заголовок */}
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-1">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">РћР°Р·РёСЃ</p>
-          <h1 className="text-3xl font-black text-primary tracking-tight">РњС–Р№ РђРєР°СѓРЅС‚</h1>
-          <p className="text-sm text-primary/60 font-medium">РЈС‡Р°СЃРЅРёРє Р· {user?.memberSince}</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Оазис</p>
+          <h1 className="text-3xl font-black text-primary tracking-tight">Мій Акаунт</h1>
+          <p className="text-sm text-primary/60 font-medium">Учасник з {user?.memberSince}</p>
         </div>
         <button
           onClick={handleLogout}
           className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-[10px] font-black uppercase tracking-widest hover:bg-accent/10 transition-colors"
         >
           <LogOut size={14} />
-          Р’РёР№С‚Рё
+          Вийти
         </button>
       </div>
 
-      {/* СЃС‚Р°С‚СѓСЃ РїС–РґРїРёСЃРєРё */}
+      {/* статус підписки */}
       <div
         className="flex items-center gap-4 p-6 rounded-[32px] border"
         style={{ backgroundColor: sub.bg, borderColor: sub.border }}
@@ -198,36 +198,36 @@ export default function AccountTab() {
           <Crown size={24} />
         </div>
         <div>
-          <p className="text-[10px] font-black uppercase tracking-widest opacity-60" style={{ color: sub.text }}>РўР°СЂРёС„РЅРёР№ РїР»Р°РЅ</p>
+          <p className="text-[10px] font-black uppercase tracking-widest opacity-60" style={{ color: sub.text }}>Тарифний план</p>
           <p className="text-xl font-black" style={{ color: sub.text }}>{user?.subscription} Plan</p>
         </div>
         <button
           className="ml-auto px-6 py-2.5 rounded-full bg-accent text-surface text-[10px] font-black uppercase tracking-widest shadow-lg shadow-accent/20 hover:-translate-y-1 transition-all"
         >
-          РћРЅРѕРІРёС‚Рё
+          Оновити
         </button>
       </div>
 
-      {/* РґРµС‚Р°Р»С– РїСЂРѕС„С–Р»СЋ */}
+      {/* деталі профілю */}
       <div className="bg-background border border-surface p-6 rounded-[40px] space-y-4 shadow-sm">
-        <p className="text-[10px] font-black uppercase tracking-widest text-primary/60 mb-2 px-2">Р”РµС‚Р°Р»С– РїСЂРѕС„С–Р»СЋ</p>
+        <p className="text-[10px] font-black uppercase tracking-widest text-primary/60 mb-2 px-2">Деталі профілю</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <InfoRow icon={User} label="РџРѕРІРЅРµ С–Рј'СЏ" value={user?.name || "вЂ”"} accent="#1B3B18" />
-          <InfoRow icon={Mail} label="Email" value={user?.email || "вЂ”"} accent="#D35400" />
-          <InfoRow icon={Calendar} label="Р”Р°С‚Р° РЅР°СЂРѕРґР¶РµРЅРЅСЏ" value={user?.birthDate || "вЂ”"} accent="#6B7D56" />
-          <InfoRow icon={Target} label="РџРѕС‚РѕС‡РЅР° С†С–Р»СЊ" value={user?.goal || "вЂ”"} accent="#D35400" />
+          <InfoRow icon={User} label="Повне ім'я" value={user?.name || "—"} accent="#1B3B18" />
+          <InfoRow icon={Mail} label="Email" value={user?.email || "—"} accent="#D35400" />
+          <InfoRow icon={Calendar} label="Дата народження" value={user?.birthDate || "—"} accent="#6B7D56" />
+          <InfoRow icon={Target} label="Поточна ціль" value={user?.goal || "—"} accent="#D35400" />
         </div>
       </div>
 
-      {/* Р·РјС–РЅР° РїР°СЂРѕР»СЏ */}
+      {/* зміна пароля */}
       <PasswordReset />
 
-      {/* РЅРµР±РµР·РїРµС‡РЅР° Р·РѕРЅР° */}
+      {/* небезпечна зона */}
       <div className="pt-4 text-center space-y-4">
         {confirmDelete && (
           <div className="mx-auto max-w-md p-4 rounded-2xl border border-accent/20 bg-accent/5 text-accent">
             <p className="text-xs font-bold uppercase tracking-widest">
-              Р¦Рµ РґРµРјРѕ-Р°РєР°СѓРЅС‚. Р’РёРґР°Р»РµРЅРЅСЏ Р·Р°РІРµСЂС€РёС‚СЊ РїРѕС‚РѕС‡РЅСѓ СЃРµСЃС–СЋ РЅР° С†СЊРѕРјСѓ РїСЂРёСЃС‚СЂРѕС—.
+              Це демо-акаунт. Видалення завершить поточну сесію на цьому пристрої.
             </p>
           </div>
         )}
@@ -237,7 +237,7 @@ export default function AccountTab() {
             onClick={() => setConfirmDelete((value) => !value)}
             className="text-[10px] font-black uppercase tracking-widest text-primary/60 hover:text-accent transition-colors"
           >
-            {confirmDelete ? "РЎРєР°СЃСѓРІР°С‚Рё" : "Р’РёРґР°Р»РёС‚Рё Р°РєР°СѓРЅС‚"}
+            {confirmDelete ? "Скасувати" : "Видалити акаунт"}
           </button>
           {confirmDelete && (
             <button
@@ -245,7 +245,7 @@ export default function AccountTab() {
               onClick={handleDeleteAccount}
               className="text-[10px] font-black uppercase tracking-widest text-accent hover:opacity-80 transition-opacity"
             >
-              РџС–РґС‚РІРµСЂРґРёС‚Рё
+              Підтвердити
             </button>
           )}
         </div>

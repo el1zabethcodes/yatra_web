@@ -8,7 +8,7 @@ import ResumeAnalyzer from "./ResumeAnalyzer";
 import { API_BASE_URL } from "@/shared/constants";
 
 /**
- * Р±СѓР»СЊР±Р°С€РєР° РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ РІ С‡Р°С‚С–
+ * бульбашка повідомлення в чаті
  */
 function Bubble({ role, text }: { role: string, text: string }) {
   const isUser = role === "user";
@@ -37,7 +37,7 @@ function Bubble({ role, text }: { role: string, text: string }) {
 }
 
 /**
- * С–РЅРґРёРєР°С‚РѕСЂ РґСЂСѓРєСѓ
+ * індикатор друку
  */
 function TypingDots() {
   return (
@@ -62,11 +62,11 @@ function TypingDots() {
 }
 
 /**
- * РєРѕРјРїРѕРЅРµРЅС‚ С‡Р°С‚Сѓ Р· РјРµРЅС‚РѕСЂРѕРј
+ * компонент чату з ментором
  */
 function MentorChat() {
   const [messages, setMessages] = useState([
-    { role: "assistant", text: "РђС…РѕР№, РљР°РїС–С‚Р°РЅРµ! РЇ РљР°РІС–, РІР°С€ РїРµСЂСЃРѕРЅР°Р»СЊРЅРёР№ РјРµРЅС‚РѕСЂ. РџСЂРѕ С‰Рѕ С…РѕС‡РµС‚Рµ РїРѕРіРѕРІРѕСЂРёС‚Рё СЃСЊРѕРіРѕРґРЅС– вЂ” РЅР°РІРёС‡РєРё, РґРѕСЂРѕР¶РЅСЏ РєР°СЂС‚Р°, РїС–РґРіРѕС‚РѕРІРєР° РґРѕ С–РЅС‚РµСЂРІ'СЋ С‡Рё С‰РѕСЃСЊ С–РЅС€Рµ?" },
+    { role: "assistant", text: "Ахой, Капітане! Я Каві, ваш персональний ментор. Про що хочете поговорити сьогодні — навички, дорожня карта, підготовка до інтерв'ю чи щось інше?" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -131,7 +131,7 @@ function MentorChat() {
         }
       }
     } catch {
-      setMessages((prev) => [...prev, { role: "assistant", text: "Р—РІ'СЏР·РѕРє РїРµСЂРµСЂРІР°РЅРѕ. РЎРїСЂРѕР±СѓР№С‚Рµ Р·РЅРѕРІСѓ Р·Р° РјРёС‚СЊ." }]);
+      setMessages((prev) => [...prev, { role: "assistant", text: "Зв'язок перервано. Спробуйте знову за мить." }]);
     } finally {
       setLoading(false);
     }
@@ -143,7 +143,7 @@ function MentorChat() {
 
   return (
     <div className="bg-background border border-surface rounded-[32px] overflow-hidden flex flex-col h-[520px] shadow-sm">
-      {/* Р·Р°РіРѕР»РѕРІРѕРє С‡Р°С‚Сѓ */}
+      {/* заголовок чату */}
       <div className="px-6 py-4 flex items-center gap-4 border-b border-surface">
         <div className="w-10 h-10 rounded-full overflow-hidden border border-surface">
           <Image src="/assets/octopus-mentor.png" alt="Kavi" width={40} height={40} className="object-cover" />
@@ -152,13 +152,13 @@ function MentorChat() {
           <p className="text-sm font-black text-primary">Kavi</p>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span className="text-[10px] text-secondary font-black uppercase tracking-widest">РћРЅР»Р°Р№РЅ</span>
+            <span className="text-[10px] text-secondary font-black uppercase tracking-widest">Онлайн</span>
           </div>
         </div>
         <Sparkles size={16} className="ml-auto text-accent opacity-50" />
       </div>
 
-      {/* РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ */}
+      {/* повідомлення */}
       <div className="flex-1 overflow-y-auto px-6 py-6 no-scrollbar">
         {messages.map((m, i) => (
           <Bubble key={i} role={m.role} text={m.text} />
@@ -167,14 +167,14 @@ function MentorChat() {
         <div ref={bottomRef} />
       </div>
 
-      {/* РїРѕР»Рµ РІРІРѕРґСѓ */}
+      {/* поле вводу */}
       <div className="px-6 py-5 border-t border-surface bg-surface/10">
         <div className="flex gap-3">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKey}
-            placeholder="Р—Р°РїРёС‚Р°Р№С‚Рµ РљР°РІС– РїСЂРѕ РІР°С€Сѓ РєР°СЂ'С”СЂСѓ..."
+            placeholder="Запитайте Каві про вашу кар'єру..."
             rows={1}
             className="flex-1 px-5 py-3.5 rounded-2xl text-sm font-medium text-primary placeholder:text-primary/60 focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all resize-none bg-background border border-surface"
           />
@@ -185,13 +185,13 @@ function MentorChat() {
               w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all
               ${input.trim() && !loading ? "bg-accent text-surface shadow-lg shadow-accent/20" : "bg-surface text-primary/50"}
             `}
-            aria-label="РќР°РґС–СЃР»Р°С‚Рё"
+            aria-label="Надіслати"
           >
             <Send size={18} />
           </button>
         </div>
         <p className="text-[10px] text-primary/60 font-bold uppercase tracking-[0.2em] mt-3 ml-1">
-          Enter РґР»СЏ РІС–РґРїСЂР°РІРєРё В· Shift+Enter РґР»СЏ РЅРѕРІРѕРіРѕ СЂСЏРґРєР°
+          Enter для відправки · Shift+Enter для нового рядка
         </p>
       </div>
     </div>
@@ -199,27 +199,27 @@ function MentorChat() {
 }
 
 /**
- * РіРѕР»РѕРІРЅРёР№ РєРѕРјРїРѕРЅРµРЅС‚ РІРєР»Р°РґРєРё РјРµРЅС‚РѕСЂР°
+ * головний компонент вкладки ментора
  */
 export default function MentorTab() {
   const [view, setView] = useState("chat"); // "chat" | "resume"
 
   return (
     <div className="space-y-8">
-      {/* Р·Р°РіРѕР»РѕРІРѕРє */}
+      {/* заголовок */}
       <div className="space-y-2">
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">РџРѕСЂР°РґРё РІС–Рґ РЁР†</p>
-        <h1 className="text-3xl font-black text-primary tracking-tight">AI РњРµРЅС‚РѕСЂ</h1>
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Поради від ШІ</p>
+        <h1 className="text-3xl font-black text-primary tracking-tight">AI Ментор</h1>
         <p className="text-sm text-primary/50 font-medium max-w-lg">
-          РЎРїС–Р»РєСѓР№С‚РµСЃСЏ Р· РљР°РІС– Р°Р±Рѕ РѕС‚СЂРёРјР°Р№С‚Рµ РіР»РёР±РѕРєРёР№ Р°РЅР°Р»С–Р· РІР°С€РѕРіРѕ СЂРµР·СЋРјРµ.
+          Спілкуйтеся з Каві або отримайте глибокий аналіз вашого резюме.
         </p>
       </div>
 
-      {/* РїРµСЂРµРјРёРєР°С‡ СЂРµР¶РёРјС–РІ */}
+      {/* перемикач режимів */}
       <div className="flex p-1 bg-surface/30 border border-surface rounded-2xl max-w-md">
         {[
-          { id: "chat", icon: MessageCircle, label: "Р§Р°С‚ Р· РљР°РІС–" },
-          { id: "resume", icon: FileSearch, label: "РђРЅР°Р»С–Р· СЂРµР·СЋРјРµ" },
+          { id: "chat", icon: MessageCircle, label: "Чат з Каві" },
+          { id: "resume", icon: FileSearch, label: "Аналіз резюме" },
         ].map(({ id, icon: Icon, label }) => (
           <button
             key={id}
@@ -235,7 +235,7 @@ export default function MentorTab() {
         ))}
       </div>
 
-      {/* РєРѕРЅС‚РµРЅС‚ */}
+      {/* контент */}
       <AnimatePresence mode="wait">
         <motion.div
           key={view}

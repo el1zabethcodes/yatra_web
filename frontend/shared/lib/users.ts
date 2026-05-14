@@ -1,6 +1,6 @@
 ﻿/**
- * Р»РѕРєР°Р»СЊРЅР° Р±Р°Р·Р° РґР°РЅРёС… РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ РґР»СЏ СЂРѕР·СЂРѕР±РєРё.
- * Р·Р±РµСЂС–РіР°С” РїРѕС‡Р°С‚РєРѕРІС– С‚РµСЃС‚РѕРІС– Р°РєР°СѓРЅС‚Рё С‚Р° РЅРѕРІРёС… РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ Сѓ localStorage.
+ * локальна база даних користувачів для розробки.
+ * зберігає початкові тестові акаунти та нових користувачів у localStorage.
  */
 
 export interface User {
@@ -90,7 +90,7 @@ const DEFAULT_USERS = [
     passwordHash: "cc067328e7828d30f097e922dd18bda5b88942c130f335209577340bf944e8b2",
     birthDate: "March 12, 2003",
     goal: "Land a Frontend Engineer role at a product company",
-    bio: "Full-Stack Explorer В· CS Junior",
+    bio: "Full-Stack Explorer · CS Junior",
     subscription: "Explorer",
     memberSince: "January 2025",
     avatar: "/assets/3d_prof_anf.png",
@@ -107,7 +107,7 @@ const DEFAULT_USERS = [
     passwordHash: "c1cd36721f00820029d17878c910109b70aa5f9aab7b9ef71eda0a28586f67f2",
     birthDate: "July 4, 2002",
     goal: "Become a UX/Product Designer at a SaaS startup",
-    bio: "Design Voyager В· HCI Graduate",
+    bio: "Design Voyager · HCI Graduate",
     subscription: "Navigator",
     memberSince: "March 2025",
     avatar: "/assets/3d_prof_anf_binocular.png",
@@ -124,7 +124,7 @@ const DEFAULT_USERS = [
     passwordHash: "b95e6d03ce8b3bd2c4c6efd0bfecfc94cdc569bd8c2dd844590203c570dc427a",
     birthDate: "November 28, 2001",
     goal: "Get into a top ML research lab or FAANG as a Data Scientist",
-    bio: "Data Captain В· ML Enthusiast",
+    bio: "Data Captain · ML Enthusiast",
     subscription: "Captain",
     memberSince: "October 2024",
     avatar: "/assets/ai_bot_octo.png",
@@ -167,12 +167,12 @@ function saveUsers() {
 }
 
 /**
- * С‚РµСЃС‚РѕРІС– Р°РєР°СѓРЅС‚Рё РґР»СЏ РґРµРјРѕ
+ * тестові акаунти для демо
  */
 export const TEST_USERS = DEFAULT_USERS.map(({ passwordHash: _passwordHash, ...user }) => user);
 
 /**
- * Р°РІС‚РµРЅС‚РёС„С–РєР°С†С–СЏ РєРѕСЂРёСЃС‚СѓРІР°С‡Р° Р·Р° email С‚Р° РїР°СЂРѕР»РµРј
+ * автентифікація користувача за email та паролем
  */
 export function authenticate(email: string, password: string): User | null {
   loadUsers();
@@ -187,7 +187,7 @@ export function authenticate(email: string, password: string): User | null {
 }
 
 /**
- * РїРѕС€СѓРє РєРѕСЂРёСЃС‚СѓРІР°С‡Р° Р·Р° email
+ * пошук користувача за email
  */
 export function getUserByEmail(email: string): User | null {
   loadUsers();
@@ -199,7 +199,7 @@ export function getUserByEmail(email: string): User | null {
 }
 
 /**
- * СЂРµС”СЃС‚СЂР°С†С–СЏ РЅРѕРІРѕРіРѕ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
+ * реєстрація нового користувача
  */
 export function registerUser({ name, email, password }: Record<string, string>): User | null {
   loadUsers();
@@ -228,7 +228,7 @@ export function registerUser({ name, email, password }: Record<string, string>):
 }
 
 /**
- * РїРѕС€СѓРє РєРѕСЂРёСЃС‚СѓРІР°С‡Р° Р·Р° id (РґР»СЏ РІС–РґРЅРѕРІР»РµРЅРЅСЏ СЃРµСЃС–С—)
+ * пошук користувача за id (для відновлення сесії)
  */
 export function getUserById(id: string): User | null {
   loadUsers();
