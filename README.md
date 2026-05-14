@@ -3,7 +3,7 @@
 **Yatra** (Sanskrit for "journey") is an AI-powered career development platform for tech students and young professionals. It helps users close the gap between where they are and where they want to be — through honest skill analysis, adaptive roadmaps, and a personal AI mentor.
 
 Built during **BluePrint 2026 Hackathon**.
-
+Цей репозиторій створення заради рефакторингу та покращення коду проекту з хакатону, з метою додати його до портфоліо.
 ---
 
 ## What it does
