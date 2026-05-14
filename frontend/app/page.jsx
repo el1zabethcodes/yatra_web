@@ -224,13 +224,13 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* ship image — pilgrimage visual */}
+      {/* pilgrimage visual */}
       <Fade className="relative z-20 w-full">
         <div className="w-full max-w-4xl mx-auto px-6 mb-4">
           <div className="rounded-[32px] overflow-hidden" style={{ boxShadow: "0 12px 48px rgba(27,59,24,0.12)" }}>
             <Image
-              src="/assets/main/ship_in_sea.png"
-              alt="A ship on a calm pilgrimage"
+              src="/assets/main/corrals_it.png"
+              alt=""
               width={1200}
               height={500}
               className="w-full h-auto object-cover"
@@ -278,38 +278,57 @@ export default function HomePage() {
       </div>
 
       {/* ══ D: SMALL WINS ══ */}
-      <div className="relative z-20 max-w-2xl mx-auto px-6 lg:px-0">
-        <Divider />
+      <div className="relative z-20 max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto">
+          <Divider />
+        </div>
 
-        <section className="py-20">
-          <Fade>
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: "rgba(27,59,24,0.35)" }}>
-              Culture of Small Wins
-            </p>
-            <h2
-              className="font-black tracking-tight leading-[1.1] mb-8"
-              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3rem)", color: "#1B3B18" }}
-            >
-              Tiny splashes create<br />great voyages.
-            </h2>
-          </Fade>
-          <Fade delay={0.1}>
-            <p className="text-lg font-medium leading-relaxed" style={{ color: "rgba(27,59,24,0.68)" }}>
-              We don&apos;t wait for the destination to celebrate. In Yatra, every fixed bug and every hour
-              of deep focus is a &ldquo;Pearl.&rdquo; We help you collect these pearls daily to prove to yourself
-              that you are moving forward, even when the shore seems far away.
-            </p>
-          </Fade>
-          <Fade delay={0.2}>
-            <p className="text-lg font-medium leading-relaxed mt-5" style={{ color: "rgba(27,59,24,0.68)" }}>
-              This is how we defeat burnout—one small win at a time.
-            </p>
+        <section className="py-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          {/* text */}
+          <div className="flex-1 min-w-0">
+            <Fade>
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: "rgba(27,59,24,0.35)" }}>
+                Culture of Small Wins
+              </p>
+              <h2
+                className="font-black tracking-tight leading-[1.1] mb-8"
+                style={{ fontSize: "clamp(1.8rem, 4.5vw, 3rem)", color: "#1B3B18" }}
+              >
+                Tiny splashes create<br />great voyages.
+              </h2>
+            </Fade>
+            <Fade delay={0.1}>
+              <p className="text-lg font-medium leading-relaxed" style={{ color: "rgba(27,59,24,0.68)" }}>
+                We don&apos;t wait for the destination to celebrate. In Yatra, every fixed bug and every hour
+                of deep focus is a &ldquo;Pearl.&rdquo; We help you collect these pearls daily to prove to yourself
+                that you are moving forward, even when the shore seems far away.
+              </p>
+            </Fade>
+            <Fade delay={0.2}>
+              <p className="text-lg font-medium leading-relaxed mt-5" style={{ color: "rgba(27,59,24,0.68)" }}>
+                This is how we defeat burnout—one small win at a time.
+              </p>
+            </Fade>
+          </div>
+
+          {/* side image */}
+          <Fade delay={0.15} className="shrink-0 w-full md:w-[280px] lg:w-[340px]">
+            <Image
+              src="/assets/main/2corrals.png"
+              alt=""
+              width={340}
+              height={420}
+              className="w-full h-auto object-contain"
+              style={{ filter: "drop-shadow(0 12px 32px rgba(27,59,24,0.14))" }}
+            />
           </Fade>
         </section>
 
-        <Divider />
+        <div className="max-w-2xl mx-auto">
+          <Divider />
+        </div>
 
-        {/* ══ E: FINAL GATEWAY ══ */}
+      {/* ══ E: FINAL GATEWAY ══ */}
         <section className="py-24 text-center">
           <Fade>
             <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(27,59,24,0.35)" }}>
@@ -330,37 +349,6 @@ export default function HomePage() {
           </Fade>
         </section>
       </div>
-
-      {/* ══ CORALS — animated bottom ══ */}
-      <div className="relative z-20 w-full overflow-hidden" style={{ marginTop: "-2px" }}>
-        <motion.div
-          animate={{ rotate: [-1, 1, -1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transformOrigin: "bottom center" }}
-        >
-          <Image
-            src="/assets/main/coralls.png"
-            alt=""
-            width={1440}
-            height={400}
-            className="w-full h-auto object-cover object-bottom"
-            style={{ display: "block" }}
-          />
-        </motion.div>
-      </div>
-
-      {/* ══ FOOTER ══ */}
-      <footer
-        className="relative z-20 py-8 px-6 text-center"
-        style={{ background: "rgba(27,59,24,0.04)", borderTop: "1px solid rgba(27,59,24,0.08)" }}
-      >
-        <p className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "rgba(27,59,24,0.35)" }}>
-          Moving with intention
-        </p>
-        <p className="text-xs font-medium mt-2" style={{ color: "rgba(27,59,24,0.25)" }}>
-          &copy; 2026 Yatra
-        </p>
-      </footer>
     </div>
   );
 }
