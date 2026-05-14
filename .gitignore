@@ -1,10 +1,24 @@
-# ─── Nested repos / copies ────────────────────────────────
-yatra/
-yatra-1/
-yatra-2/
+# env
+.env
+.env.local
+.env.production
+backend/.env
 
-# ─── Python ───────────────────────────────────────────────
+# secrets
+GEMINI.md
+
+# next
+.next/
+
+# node
+node_modules/
+
+# logs
+*.log
+
+# python
 __pycache__/
+*.pyc
 *.py[cod]
 *.egg-info/
 .venv/
@@ -13,18 +27,20 @@ dist/
 build/
 *.pyo
 
-# ─── Secrets ──────────────────────────────────────────────
-.env
-.env.local
-.env.*.local
+# sqlite
+*.db
 
-# ─── Logs ─────────────────────────────────────────────────
-*.log
+# vscode
+.vscode/
 
-# ─── OS / IDE ─────────────────────────────────────────────
+# macos
 .DS_Store
 Thumbs.db
+
+# web
+yatra/
+yatra-1/
+yatra-2/
 .idea/
-.vscode/
 *.swp
 *.swo

@@ -41,7 +41,7 @@ Open [http://localhost:3000](http://localhost:3000)
 ### 3. Environment
 Copy `.env.local.example` to `.env.local` and fill in your Groq API key:
 ```
-GROQ_API_KEY=gsk_...
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
 ### 4. Backend (optional)
