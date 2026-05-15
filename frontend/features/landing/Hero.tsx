@@ -1,77 +1,63 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 /**
- * головна секція лендінгу
+ * Головна секція лендінгу (Hero)
  */
 export default function Hero() {
+  const glassMainClasses = "bg-white/30 backdrop-blur-[12px] border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.07),inset_0_1px_0_rgba(255,255,255,0.65)] rounded-[28px]";
+  const glassSubClasses = "bg-white/25 backdrop-blur-[12px] border border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.55)] rounded-[20px]";
+
   return (
-    <section className="relative pt-20 pb-32 overflow-hidden bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-primary leading-[1.1]">
-              Ваш шлях у світі IT <br />
-              <span className="text-secondary italic">починається тут.</span>
-            </h1>
-          </motion.div>
+    <section className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-28 pt-4 overflow-visible">
+      {/* Декоративні свічення */}
+      <div className="absolute pointer-events-none top-[10%] left-[30%] w-[480px] h-[480px] bg-[radial-gradient(circle,rgba(107,125,86,0.18)_0%,transparent_70%)] blur-[60px]" />
+      <div className="absolute pointer-events-none bottom-[5%] right-[5%] w-[320px] h-[320px] bg-[radial-gradient(circle,rgba(255,220,160,0.22)_0%,transparent_70%)] blur-[50px]" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-primary/60 max-w-2xl mx-auto font-medium"
-          >
-            Спокійна та розумна платформа для навігації кар'єрою. 
-            Ми допоможемо вам перетворити хаос вибору на чіткий план дій.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              href="/login"
-              className="px-12 py-4 rounded-full bg-primary text-surface font-black uppercase tracking-widest text-sm hover:bg-secondary transition-all shadow-lg hover:shadow-secondary/20"
-            >
-              Почати подорож
-            </Link>
-            <Link
-              href="#features"
-              className="px-12 py-4 rounded-full border-2 border-primary/10 text-primary font-black uppercase tracking-widest text-sm hover:bg-surface transition-all"
-            >
-              Дізнатись більше
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* ілюстрація */}
+      <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-0">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 relative w-full aspect-[16/9] max-w-5xl mx-auto"
+          initial={{ opacity: 0, scale: 0.85, x: -30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative shrink-0 z-20 w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] md:-mr-20 lg:-mr-28 drop-shadow-[0_24px_40px_rgba(0,0,0,0.18)]"
         >
           <Image
             src="/assets/main/octopus.png"
-            alt="Yatra mascot navigating the career ocean"
+            alt="Ashta the octopus"
             fill
-            className="object-contain"
+            className="object-contain object-bottom"
             priority
           />
         </motion.div>
+
+        <div className="relative z-10 flex flex-col gap-5 flex-1 w-full min-w-0">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
+            className={`px-10 py-10 sm:px-12 sm:py-12 ${glassMainClasses}`}
+          >
+            <h1 className="font-black leading-[0.9] tracking-[-0.04em] text-[#1B3B18] text-[clamp(4.5rem,10vw,9rem)]">
+              STAND
+              <br />
+              OUT
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, delay: 0.3, ease: "easeOut" }}
+            className={`px-8 py-5 sm:px-10 sm:py-6 ${glassSubClasses}`}
+          >
+            <p className="font-semibold text-lg sm:text-xl leading-snug text-[#1B3B18]/75">
+              Close the Gap. Build Your Future.
+            </p>
+          </motion.div>
+        </div>
       </div>
-      
-      {/* фоновий декор (мінімалістичний) */}
     </section>
   );
 }

@@ -1,19 +1,38 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import { Check, Compass, Anchor, Crown } from "lucide-react";
 import Link from "next/link";
+import { ReactNode } from "react";
+
+interface FadeProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}
+
+const Fade = ({ children, delay = 0, className = "" }: FadeProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 28 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{ duration: 0.8, delay, ease: "easeOut" }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
 
 const PLANS = [
   {
     name: "Explorer",
     price: "0",
-    description: "Для тих, хто тільки починає свій шлях.",
+    description: "For those just starting their pilgrimage.",
     features: [
-      "Базовий AI ментор",
-      "Оцінка навичок (Skill Radar)",
-      "Спільнота мандрівників",
-      "Щоденні малі перемоги",
+      "Basic AI Mentor",
+      "Skill Radar Assessment",
+      "Community of Pilgrims",
+      "Daily Small Wins",
     ],
     icon: Anchor,
     color: "#1B3B18",
@@ -21,12 +40,12 @@ const PLANS = [
   {
     name: "Navigator",
     price: "499",
-    description: "Оптимальний вибір для активного росту.",
+    description: "The optimal choice for active growth.",
     features: [
-      "Розширений AI ментор Kavi",
-      "Персональна карта на 30 днів",
-      "Аналіз резюме та портфоліо",
-      "Пріоритетна підтримка",
+      "Advanced AI Mentor Kavi",
+      "30-Day Personalized Roadmap",
+      "Resume & Portfolio Analysis",
+      "Priority Support",
     ],
     icon: Compass,
     color: "#D35400",
@@ -35,12 +54,12 @@ const PLANS = [
   {
     name: "Captain",
     price: "999",
-    description: "Повний контроль над вашою кар'єрою.",
+    description: "Full control over your career voyage.",
     features: [
-      "Безлімітний AI ментор 24/7",
-      "Динамічна карта розвитку",
-      "Підготовка до інтерв'ю з ШІ",
-      "Ексклюзивні воркшопи",
+      "24/7 Unlimited AI Mentor",
+      "Dynamic Adaptive Roadmap",
+      "AI-Powered Interview Prep",
+      "Exclusive Workshops",
     ],
     icon: Crown,
     color: "#6B7D56",
@@ -48,85 +67,90 @@ const PLANS = [
 ];
 
 /**
- * компонент сторінки цін
+ * компонент сторінки цін (YatraPricing)
  */
 export default function YatraPricing() {
+  const glassCardClasses = "bg-white/28 backdrop-blur-[14px] border border-white/45 shadow-[0_6px_28px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.65)] rounded-[40px]";
+  const popularCardClasses = "bg-white/35 backdrop-blur-[16px] border-[#D35400]/30 shadow-[0_12px_48px_rgba(211,84,0,0.1),inset_0_1px_0_rgba(255,255,255,0.7)] rounded-[40px]";
+
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-transparent">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20 space-y-4">
-          <h1 className="text-4xl md:text-6xl font-black text-primary tracking-tight">
-            Оберіть свій <span className="text-secondary italic">курс.</span>
-          </h1>
-          <p className="text-lg text-primary/50 max-w-2xl mx-auto font-medium">
-            Прозорі тарифи для будь-якого етапу вашої подорожі. Без прихованих комісій, тільки чистий розвиток.
-          </p>
+          <Fade>
+            <h1 className="text-4xl md:text-6xl font-black text-[#1B3B18] tracking-tight">
+              Choose your <span className="italic opacity-80">course.</span>
+            </h1>
+            <p className="text-lg text-[#1B3B18]/55 max-w-2xl mx-auto font-medium">
+              Transparent pricing for every stage of your pilgrimage. No hidden fees, just pure growth.
+            </p>
+          </Fade>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {PLANS.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`
-                relative flex flex-col p-8 rounded-[40px] border transition-all
-                ${plan.popular ? "border-secondary bg-surface/20 shadow-xl" : "border-surface bg-background hover:border-surface/80 shadow-sm"}
-              `}
-            >
-              {plan.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-surface px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
-                  Найпопулярніший
-                </div>
-              )}
-
-              <div className="mb-8 space-y-4">
-                <div 
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center"
-                  style={{ backgroundColor: `${plan.color}10`, color: plan.color }}
-                >
-                  <plan.icon size={24} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-black text-primary">{plan.name}</h3>
-                  <p className="text-sm text-primary/60 font-medium mt-1">{plan.description}</p>
-                </div>
-              </div>
-
-              <div className="mb-8 flex items-baseline gap-1">
-                <span className="text-4xl font-black text-primary">₴{plan.price}</span>
-                <span className="text-primary/60 text-sm font-bold uppercase tracking-widest">/місяць</span>
-              </div>
-
-              <ul className="flex-1 space-y-4 mb-10">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check size={12} className="text-secondary" />
-                    </div>
-                    <span className="text-sm font-medium text-primary/70">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/login"
+            <Fade key={plan.name} delay={i * 0.1}>
+              <div
                 className={`
-                  w-full py-4 rounded-2xl text-center text-sm font-black uppercase tracking-widest transition-all
-                  ${plan.popular ? "bg-primary text-surface hover:bg-secondary shadow-lg shadow-secondary/20" : "bg-surface text-primary hover:bg-surface/80"}
+                  relative flex flex-col p-8 h-full transition-all duration-300
+                  ${plan.popular ? popularCardClasses : glassCardClasses}
+                  ${plan.popular ? "scale-105 z-10" : "hover:scale-[1.02]"}
                 `}
               >
-                Обрати {plan.name}
-              </Link>
-            </motion.div>
+                {plan.popular && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#D35400] text-[#E6E4C5] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#D35400]/20">
+                    Most Popular
+                  </div>
+                )}
+
+                <div className="mb-8 space-y-4">
+                  <div 
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/50 shadow-inner"
+                    style={{ color: plan.color }}
+                  >
+                    <plan.icon size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-[#1B3B18]">{plan.name}</h3>
+                    <p className="text-sm text-[#1B3B18]/60 font-medium mt-1">{plan.description}</p>
+                  </div>
+                </div>
+
+                <div className="mb-8 flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-[#1B3B18]">₴{plan.price}</span>
+                  <span className="text-[#1B3B18]/60 text-sm font-bold uppercase tracking-widest">/month</span>
+                </div>
+
+                <ul className="flex-1 space-y-4 mb-10">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6B7D56]/10 flex items-center justify-center shrink-0 mt-0.5 border border-[#6B7D56]/20">
+                        <Check size={12} className="text-[#1B3B18]" />
+                      </div>
+                      <span className="text-sm font-medium text-[#1B3B18]/70">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/login"
+                  className={`
+                    w-full py-4 rounded-2xl text-center text-sm font-black uppercase tracking-widest transition-all
+                    ${plan.popular 
+                      ? "bg-gradient-to-b from-[#7a8f63] to-[#6B7D56] text-[#E6E4C5] shadow-[0_7px_0_#4a5a3a,0_12px_24px_rgba(74,90,58,0.4)]" 
+                      : "bg-[#1B3B18] text-[#E6E4C5] hover:opacity-90 shadow-[0_7px_0_#0a1a08]"}
+                  `}
+                >
+                  Choose {plan.name}
+                </Link>
+              </div>
+            </Fade>
           ))}
         </div>
 
         <div className="mt-20 text-center">
-          <p className="text-sm text-primary/60 font-bold uppercase tracking-widest">
-            Потрібен індивідуальний план для університету? <Link href="#" className="text-primary hover:text-secondary transition-colors underline underline-offset-4">Зв'яжіться з нами</Link>
+          <p className="text-sm text-[#1B3B18]/60 font-bold uppercase tracking-widest">
+            Need a custom plan for your university? <Link href="#" className="text-[#1B3B18] hover:opacity-70 transition-colors underline underline-offset-4">Contact us</Link>
           </p>
         </div>
       </div>
